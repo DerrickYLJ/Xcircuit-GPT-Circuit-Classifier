@@ -122,13 +122,13 @@ def createMatplotLibBarGraph(listTrain, listTest, listValidation, argumentVal):
 
         # Adding labels and a title
         plt.xlabel('Train/Test/Validation')
-        plt.ylabel('Percentage Correct')
-        plt.title('Percentage of Box Label Correct')
+        plt.ylabel('Precision')
+        plt.title('Precision for Train/Test/Vaidation')
 
         plt.show()
     elif argumentVal == "recall":
         categories = ["Train", "Test", "Validation"]
-        print("list tarin length: ", len(listTrain))
+        print("list train length: ", len(listTrain))
         print("list test length: ", len(listTest))
         print("list validation length: ", len(listValidation))
         
@@ -150,19 +150,20 @@ def createMatplotLibBarGraph(listTrain, listTest, listValidation, argumentVal):
 
         # Adding labels and a title
         plt.xlabel('Train/Test/Validation')
-        plt.ylabel('Percentage Correct')
-        plt.title('Percentage of Box Label Correct')
+        plt.ylabel('Recall')
+        plt.title('Recall for Train/Test/Vaidation')
 
         plt.show()
     elif argumentVal == "chatGPT":
         categories = ["Helpful", "Unhelpful"]
-        helpful = 10
-        unhelpful = 4
+        helpful = 5
+        unhelpful = 2
         
         values = [helpful, unhelpful]
-
+        plt.title('Percentage of Helpful and Unhelpful GPT Outputs')
         # Create pi chart
         plt.pie(values, labels=categories, autopct='%1.1f%%', startangle=90)
+        plt.show()
     
 # See value of argument supplied to python file
 argumentVal = sys.argv[1]
