@@ -19,7 +19,7 @@ import time
 import custom_data
 
 annotations_file = "data/Circuits/Circuits_labels/circuit_labels.csv"
-img_dir = "data/Circuits/Circuits_Images/"
+img_dir = "labelled-images/"
 
 training_data = custom_data.CustomImageDataset(annotations_file, img_dir, image_size=(256, 256))
 train_dataloader = DataLoader(training_data, batch_size=32, shuffle=True)
