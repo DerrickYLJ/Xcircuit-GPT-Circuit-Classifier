@@ -223,7 +223,6 @@ def createPromptForGroup(group, disconnected, fullLoop):
         prompt += "There are no components connected to each other."
     
 
-    print(prompt)
     return prompt
 
 

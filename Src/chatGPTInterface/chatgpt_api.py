@@ -2,6 +2,7 @@ import openai
 import os
 import pandas as pd
 import time
+import sys
 
 openai.api_key = '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'
 
@@ -14,6 +15,14 @@ def get_completion(prompt, model="gpt-3.5-turbo"):
     )
     return response.choices[0].message["content"]
 
-prompt = "Hi there. What is your name?"
+
+
+
+# read from file tempOutput.txt
+prompt = ""
+with open(sys.argv[1]) as f:
+    prompt = f.read()
+
+print("THIS IS THE PROMPT: " + prompt)
 response = get_completion(prompt)
 print(response)

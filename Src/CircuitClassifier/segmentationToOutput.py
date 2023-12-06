@@ -148,7 +148,7 @@ def getGroupsOfConnectedBoxes(BoxList):
 
 
 
-lines = readFromFile("../../Data/content/Circuit-Segmentation-1/test/labels/Circuit-27_png.rf.9402f605675131d0c69b50a26f1e6f61.txt")
+lines = readFromFile(sys.argv[1])
 
 BoundingBoxList = seperateLines(lines)
 
@@ -174,7 +174,7 @@ def getLongestGroupThatsTrue(groups, fullLoop):
 # create prompt for said list
 def createPromptForGroup(group, disconnected, fullLoop):
     prompt = ""
-    prompt += "Will this create a complete circuit that works?\n\n"
+    prompt += "Will components create a complete circuit that works?\n\n"
     if len(group) != 0:
         if len(group) > 1:
             prompt += "There is a "
@@ -190,32 +190,31 @@ def createPromptForGroup(group, disconnected, fullLoop):
             prompt += ".\n\n"
             # print("The prompt is: " + prompt)
             
-            if len(disconnected) >= 1:
-                prompt += "There are also additional disconnected components of a " + labelToObject[disconnected[0].label] 
-                for i in range(1, len(disconnected)):
-                    if i == len(disconnected) - 1:
-                        prompt += " and a " + labelToObject[disconnected[i].label]
-                    else:
-                        prompt += ", a " + labelToObject[disconnected[i].label]
+            # if len(disconnected) >= 1:
+            #     prompt += "There are also additional disconnected components of a " + labelToObject[disconnected[0].label] 
+            #     for i in range(1, len(disconnected)):
+            #         if i == len(disconnected) - 1:
+            #             prompt += " and a " + labelToObject[disconnected[i].label]
+            #         else:
+            #             prompt += ", a " + labelToObject[disconnected[i].label]
                 
-                prompt += ".\n\n"
+            #     prompt += ".\n\n"
         else:
             prompt += "There is a " + labelToObject[group[0].label] + ".\n\n"
-            if len(disconnected) >= 1:
-                prompt += "There are also additional disconnected components of a " + labelToObject[disconnected[0].label] 
-                for i in range(1, len(disconnected)):
-                    if i == len(disconnected) - 1:
-                        prompt += " and a " + labelToObject[disconnected[i].label]
-                    else:
-                        prompt += ", a " + labelToObject[disconnected[i].label]
+            # if len(disconnected) >= 1:
+            #     prompt += "There are also additional disconnected components of a " + labelToObject[disconnected[0].label] 
+            #     for i in range(1, len(disconnected)):
+            #         if i == len(disconnected) - 1:
+            #             prompt += " and a " + labelToObject[disconnected[i].label]
+            #         else:
+            #             prompt += ", a " + labelToObject[disconnected[i].label]
                 
-                prompt += ".\n\n"
+            #     prompt += ".\n\n"
         
     else:
         prompt += "There are no components connected to each other."
     
 
-    print(prompt)
     return prompt
 
 
@@ -226,3 +225,8 @@ longest, longestIndex = getLongestGroupThatsTrue(groups, fullLoop)
 # print("length of disconnected is: " + str(len(disconnected)))
 # print("length of fullLoop is: " + str(len(fullLoop)))
 prompt = createPromptForGroup(groups[longestIndex], disconnected[longestIndex], fullLoop[longestIndex])
+print("THIS IS ORGIINAL PROMPT:" + prompt)
+
+# output to file
+outputFile = open("tempOutput.txt", "w")
+outputFile.write(prompt)

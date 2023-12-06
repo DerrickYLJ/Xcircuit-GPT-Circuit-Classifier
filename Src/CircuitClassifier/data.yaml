@@ -1,6 +1,6 @@
-train: ../train/images
-val: ../valid/images
-test: ../test/images
+train: ../../Data/content/Circuit-Segmentation-1/train
+val: ../../Data/content/Circuit-Segmentation-1/valid
+test: ../../Data/content/Circuit-Segmentation-1/test
 
 nc: 5
 names: ['Battery', 'BatteryFire', 'LightBulb', 'Resistor', 'Wire']
