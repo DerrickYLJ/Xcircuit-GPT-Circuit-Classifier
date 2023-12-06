@@ -61,7 +61,6 @@ test_dataloader = DataLoader(training_data, batch_size=32, shuffle=True)
 print("[INFO] generating the train/validation split...")
 numTrainSamples = int(len(trainData) * TRAIN_SPLIT)
 numValSamples = int(len(trainData) * VAL_SPLIT)
-print(numTrainSamples, numValSamples, len(trainData), TRAIN_SPLIT, VAL_SPLIT)
 (trainData, valData) = random_split(trainData,
 	[numTrainSamples, numValSamples],
 	generator=torch.Generator().manual_seed(42))
