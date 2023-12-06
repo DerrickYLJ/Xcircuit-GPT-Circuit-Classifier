@@ -225,7 +225,7 @@ longest, longestIndex = getLongestGroupThatsTrue(groups, fullLoop)
 # print("length of disconnected is: " + str(len(disconnected)))
 # print("length of fullLoop is: " + str(len(fullLoop)))
 prompt = createPromptForGroup(groups[longestIndex], disconnected[longestIndex], fullLoop[longestIndex])
-print("THIS IS ORGIINAL PROMPT:" + prompt)
+# print("THIS IS ORGIINAL PROMPT:" + prompt)
 
 # output to file
 outputFile = open("tempOutput.txt", "w")

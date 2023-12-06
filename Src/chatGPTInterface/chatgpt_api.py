@@ -23,6 +23,6 @@ prompt = ""
 with open(sys.argv[1]) as f:
     prompt = f.read()
 
-print("THIS IS THE PROMPT: " + prompt)
+# print("THIS IS THE PROMPT: " + prompt)
 response = get_completion(prompt)
 print(response)

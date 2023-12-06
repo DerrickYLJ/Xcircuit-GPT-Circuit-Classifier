@@ -156,8 +156,8 @@ def createMatplotLibBarGraph(listTrain, listTest, listValidation, argumentVal):
         plt.show()
     elif argumentVal == "chatGPT":
         categories = ["Helpful", "Unhelpful"]
-        helpful = 5
-        unhelpful = 2
+        helpful = 7
+        unhelpful = 0
         
         values = [helpful, unhelpful]
         plt.title('Percentage of Helpful and Unhelpful GPT Outputs')
@@ -172,9 +172,9 @@ trainImgs = readLabels("../../Data/content/Circuit-Segmentation-1/train/labels")
 testImgs = readLabels("../../Data/content/Circuit-Segmentation-1/test/labels")
 validationImgs = readLabels("../../Data/content/Circuit-Segmentation-1/valid/labels")
 
-trainResImgs = readLabels("../../Data/content/runs/segment/ToDownload/train/labels")
-testResImgs = readLabels("../../Data/content/runs/segment/ToDownload/test/labels")
-validationResImgs = readLabels("../../Data/content/runs/segment/ToDownload/valid/labels")
+trainResImgs = readLabels("../../Output/runs/segment/ToDownload/train/labels")
+testResImgs = readLabels("../../Output/runs/segment/ToDownload/test/labels")
+validationResImgs = readLabels("../../Output/runs/segment/ToDownload/valid/labels")
 
 #combine trainImgs, testImgs, and validationImgs into one list of labels
 originalLabels = (list(map( lambda x: ImageLabel(x),trainImgs)), list(map( lambda x: ImageLabel(x),testImgs)), list(map( lambda x: ImageLabel(x),validationImgs)))
