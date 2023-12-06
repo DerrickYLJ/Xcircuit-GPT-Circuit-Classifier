@@ -156,7 +156,7 @@ def getGroupsOfConnectedBoxes(BoxList):
 
 
 
-lines = readFromFile("ActualOutputLabels/Circuit-22_png.rf.19ae539563ea7ca243ff45da857122df.txt")
+lines = readFromFile("../../Data/content/Circuit-Segmentation-1/test/labels/Circuit-8_png.rf.4c24d6e893058f4f4fe2af8820e08377.txt")
 
 BoundingBoxList = seperateLines(lines)
 
@@ -189,7 +189,7 @@ def createPromptForGroup(group, disconnected, fullLoop):
             for i in range(len(group)):
                 if i == len(group) - 1:
                     if fullLoop:
-                        prompt = prompt[:-16] + " connected to the original "  + labelToObject[group[0].label]
+                        prompt = prompt[:-16] + " connected to a " + labelToObject[group[i].label] + " connected to the original "  + labelToObject[group[0].label]
                     else:
                         prompt = prompt[:-16] + " connected to a " + labelToObject[group[i].label] + " not connected to the original " + labelToObject[group[0].label]
                 else:

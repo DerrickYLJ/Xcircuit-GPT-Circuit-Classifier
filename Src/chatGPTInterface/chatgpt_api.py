@@ -3,7 +3,7 @@ import os
 import pandas as pd
 import time
 
-openai.api_key = 'key'
+openai.api_key = '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'
 
 def get_completion(prompt, model="gpt-3.5-turbo"):
     messages = [{"role": "user", "content": prompt}]
