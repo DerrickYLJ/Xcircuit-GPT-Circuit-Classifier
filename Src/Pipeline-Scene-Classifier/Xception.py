@@ -10,8 +10,15 @@ ssl._create_default_https_context = ssl._create_unverified_context
 
 tfds.disable_progress_bar()
 # Getting the data
-train_ds, validation_ds = keras.utils.image_dataset_from_directory(directory = "../../data/Circuits/Xception_Train/", validation_split = 0.2, seed = 1, batch_size=16, subset = "both")
-test_ds = keras.utils.image_dataset_from_directory(directory = "../../data/Circuits/Xception_Test/")
+
+# split the data in  training and validation sets and test sets
+train_ds, validation_ds, test_ds = tfds.load(
+    "cats_vs_dogs", # name of the dataset
+    split=["train[:40%]", "train[40%:50%]", "train[50%:60%]"],
+
+
+train_ds, validation_ds = keras.utils.image_dataset_from_directory(directory = "../../../Data/content/Circuit-Segmentation-1/", validation_split = 0.2, seed = 1, batch_size=8, subset = "both")
+test_ds = keras.utils.image_dataset_from_directory(directory = "../../data/content/Xception_Test/")
 print(f"Number of training samples: {train_ds.cardinality()}")
 print(f"Number of validation samples: {validation_ds.cardinality()}")
 
@@ -77,6 +84,7 @@ x = keras.layers.Dropout(0.2)(x)  # Regularize with dropout
 outputs = keras.layers.Dense(1)(x)
 model = keras.Model(inputs, outputs)
 
+#
 model.summary(show_trainable=True)
 
 model.compile(
