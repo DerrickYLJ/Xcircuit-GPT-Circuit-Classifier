@@ -11,14 +11,9 @@ ssl._create_default_https_context = ssl._create_unverified_context
 tfds.disable_progress_bar()
 # Getting the data
 
-# split the data in  training and validation sets and test sets
-train_ds, validation_ds, test_ds = tfds.load(
-    "cats_vs_dogs", # name of the dataset
-    split=["train[:40%]", "train[40%:50%]", "train[50%:60%]"],
 
-
-train_ds, validation_ds = keras.utils.image_dataset_from_directory(directory = "../../../Data/content/Circuit-Segmentation-1/", validation_split = 0.2, seed = 1, batch_size=8, subset = "both")
-test_ds = keras.utils.image_dataset_from_directory(directory = "../../data/content/Xception_Test/")
+train_ds, validation_ds = keras.utils.image_dataset_from_directory(directory = "../../Data/content/Circuit-Segmentation-1/Scene_Data/TrainingValid", validation_split = 0.2, seed = 1, batch_size=8, subset = "both")
+test_ds = keras.utils.image_dataset_from_directory(directory = "../../Data/content/Circuit-Segmentation-1/Scene_Data/Test")
 print(f"Number of training samples: {train_ds.cardinality()}")
 print(f"Number of validation samples: {validation_ds.cardinality()}")
 
@@ -81,7 +76,7 @@ x = scale_layer(inputs)
 x = base_model(x, training=False)
 x = keras.layers.GlobalAveragePooling2D()(x)
 x = keras.layers.Dropout(0.2)(x)  # Regularize with dropout
-outputs = keras.layers.Dense(1)(x)
+outputs = keras.layers.Dense(3)(x)
 model = keras.Model(inputs, outputs)
 
 #
@@ -89,11 +84,11 @@ model.summary(show_trainable=True)
 
 model.compile(
     optimizer=keras.optimizers.legacy.Adam(),
-    loss=keras.losses.BinaryCrossentropy(from_logits=True),
-    metrics=[keras.metrics.BinaryAccuracy()],
+    loss=keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+    metrics=[keras.metrics.SparseCategoricalAccuracy()],
 )
 
-epochs = 2
+epochs = 10
 print("Fitting the top layer of the model")
 model.fit(train_ds, epochs=epochs, validation_data=validation_ds)
 
@@ -108,8 +103,8 @@ model.summary(show_trainable=True)
 
 model.compile(
     optimizer=keras.optimizers.legacy.Adam(1e-5),  # Low learning rate
-    loss=keras.losses.BinaryCrossentropy(from_logits=True),
-    metrics=[keras.metrics.BinaryAccuracy()],
+    loss=keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+    metrics=[keras.metrics.SparseCategoricalAccuracy()],
 )
 
 epochs = 1
@@ -118,3 +113,6 @@ model.fit(train_ds, epochs=epochs, validation_data=validation_ds)
 
 print("Test dataset evaluation")
 model.evaluate(test_ds)
+
+test_loss, test_accuracy = model.evaluate(test_ds)
+print(f"Test accuracy: {test_accuracy}")
