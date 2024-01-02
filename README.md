@@ -1,6 +1,6 @@
 # GPT Circuit Classifier
 
-This repo consists of code to allow chatgpt to effectively classify images of circuits. This algoirthm consists of several steps. First a scene is classified. If it is a circuit, then YOLO uses CNNs to draw segmentations around various items. Then an algorithm uses said segmentations to essentially convert the image to a sentence describing the circuit which will be fed into chatgpt. The response from chatgpt is the final output.
+This repo consists of code to allow chatgpt to effectively classify images of circuits. This algoirthm consists of several steps. First a scene is classified though an end-to-end fine-tuned deep neural network Xception. If it is a circuit, then YOLO uses CNNs to draw segmentations around various items. Then an algorithm uses said segmentations to essentially convert the image to a sentence describing the circuit which will be fed into chatgpt. The response from chatgpt is the final output.
 
 - Data: The original image data
 - Output: The ouput images from YOLO segmentation algorithm
