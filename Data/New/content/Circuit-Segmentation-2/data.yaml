@@ -1,0 +1,16 @@
+names:
+- Battery
+- Light Bulb
+- Resistor
+- Wire
+- battery with fire
+nc: 5
+roboflow:
+  license: CC BY 4.0
+  project: circuit-segmentation
+  url: https://universe.roboflow.com/ethan-muchnik-minqm/circuit-segmentation/dataset/2
+  version: 2
+  workspace: ethan-muchnik-minqm
+test: ../test/images
+train: ../train/images
+val: ../valid/images
