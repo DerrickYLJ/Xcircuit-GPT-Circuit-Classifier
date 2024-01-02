@@ -88,7 +88,7 @@ model.compile(
     metrics=[keras.metrics.SparseCategoricalAccuracy()],
 )
 
-epochs = 10
+epochs = 25
 print("Fitting the top layer of the model")
 model.fit(train_ds, epochs=epochs, validation_data=validation_ds)
 
@@ -110,6 +110,9 @@ model.compile(
 epochs = 1
 print("Fitting the end-to-end model")
 model.fit(train_ds, epochs=epochs, validation_data=validation_ds)
+
+#Save the model
+model.save("Xception.h5")
 
 print("Test dataset evaluation")
 model.evaluate(test_ds)
