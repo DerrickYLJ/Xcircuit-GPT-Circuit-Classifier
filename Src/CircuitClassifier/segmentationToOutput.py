@@ -174,7 +174,7 @@ def getLongestGroupThatsTrue(groups, fullLoop):
 # create prompt for said list
 def createPromptForGroup(group, disconnected, fullLoop):
     prompt = ""
-    prompt += "Will components create a complete circuit that works?\n\n"
+    prompt += "Will components create a complete circuit that works and have no major risks?\n\n"
     if len(group) != 0:
         if len(group) > 1:
             prompt += "There is a "

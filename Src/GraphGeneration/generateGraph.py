@@ -168,13 +168,13 @@ def createMatplotLibBarGraph(listTrain, listTest, listValidation, argumentVal):
 # See value of argument supplied to python file
 argumentVal = sys.argv[1]
 
-trainImgs = readLabels("../../Data/content/Circuit-Segmentation-1/train/labels")
-testImgs = readLabels("../../Data/content/Circuit-Segmentation-1/test/labels")
-validationImgs = readLabels("../../Data/content/Circuit-Segmentation-1/valid/labels")
+trainImgs = readLabels("../../Data/New/content/Circuit-Segmentation-2/train/labels")
+testImgs = readLabels("../../Data/New/content/Circuit-Segmentation-2/test/labels")
+validationImgs = readLabels("../../Data/New/content/Circuit-Segmentation-2/valid/labels")
 
-trainResImgs = readLabels("../../Output/runs/segment/ToDownload/train/labels")
-testResImgs = readLabels("../../Output/runs/segment/ToDownload/test/labels")
-validationResImgs = readLabels("../../Output/runs/segment/ToDownload/valid/labels")
+trainResImgs = readLabels("../../Output/FinalTest/content/runs/segment/train/labels")
+testResImgs = readLabels("../../Output/FinalTest/content/runs/segment/test/labels")
+validationResImgs = readLabels("../../Output/FinalTest/content/runs/segment/valid/labels")
 
 #combine trainImgs, testImgs, and validationImgs into one list of labels
 originalLabels = (list(map( lambda x: ImageLabel(x),trainImgs)), list(map( lambda x: ImageLabel(x),testImgs)), list(map( lambda x: ImageLabel(x),validationImgs)))

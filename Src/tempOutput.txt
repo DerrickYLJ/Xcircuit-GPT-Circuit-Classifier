@@ -1,4 +1,4 @@
 Will components create a complete circuit that works?
 
-There is a Wire connected to a Battery On Fire connected to a Wire connected to a Wire connected to a Wire connected to the original Wire.
+There is a Battery On Fire connected to a Wire connected to a Wire connected to a Wire connected to a Wire connected to the original Battery On Fire.
 
