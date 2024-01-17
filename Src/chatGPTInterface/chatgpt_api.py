@@ -1,6 +1,6 @@
 from openai import OpenAI
 
-client = OpenAI(api_key='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')
+client = OpenAI(api_key='NOT SHOWN')
 import os
 import pandas as pd
 import time
