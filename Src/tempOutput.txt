@@ -1,4 +1,4 @@
-Will components create a complete circuit that works?
+Will components create a complete circuit that works and have no major risks?
 
-There is a Battery On Fire connected to a Wire connected to a Wire connected to a Wire connected to a Wire connected to the original Battery On Fire.
+There is a Light Bulb connected to a Battery connected to a Wire connected to a Wire connected to a Wire connected to a Resistor connected to a Wire connected to a Light Bulb connected to a Battery connected to a Light Bulb connected to a Wire connected to the original Light Bulb.
 

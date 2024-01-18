@@ -53,7 +53,7 @@ def calculate_overlap(currBoxCordsList, otherBoxCordsList):
     otherBox = Polygon.Polygon(otherBoxCordsList)
     intersection = currBox.intersection(otherBox)
     distance = currBox.distance(otherBox)
-    print("intersection area is: " + str(intersection.area))
+    # print("intersection area is: " + str(intersection.area))
     return intersection.area, distance
 
 
@@ -116,16 +116,16 @@ def getGroupsOfConnectedBoxes(BoxList):
                         disconnected[-1].append(BoxList[j])
                 break
             if len(used) == len(BoxList):
-                print("this group is: " + str(list(map( lambda x: x.id ,groups[-1]))))
-                print("id of i is: " + str(BoxList[i].id))
-                print("The overlapping boxes are: " + str(setOfOverlappingBoxes))
+                # print("this group is: " + str(list(map( lambda x: x.id ,groups[-1]))))
+                # print("id of i is: " + str(BoxList[i].id))
+                # print("The overlapping boxes are: " + str(setOfOverlappingBoxes))
                 setOfOverlappingBoxes = set()
                 for j in range(len(BoxList)):
                     if j == currBox.id:
                         continue
                     overLapAmm, distance = calculate_overlap(currBox.XYList,BoxList[j].XYList)
-                    print("distance is: " + str(distance))
-                    print("overlap amm is: " + str(overLapAmm))
+                    # print("distance is: " + str(distance))
+                    # print("overlap amm is: " + str(overLapAmm))
                     if overLapAmm > 0.000 or distance < 0.03:
                         setOfOverlappingBoxes.add(BoxList[j].id)
                 if BoxList[i].id in setOfOverlappingBoxes:

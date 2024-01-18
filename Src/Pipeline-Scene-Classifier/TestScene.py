@@ -5,6 +5,7 @@ class_names = { 0 : "Architecture", 1 : "Circuit", 2 : "Misc"}
 
 import argparse
 import sys
+import os.path
 # Read argumetns via argparse
 parser = argparse.ArgumentParser()
 parser.add_argument("model_file", help="The model file to load")
@@ -22,7 +23,7 @@ model = keras.models.load_model(model_file)
 import tensorflow as tf
 from tensorflow.keras.preprocessing import image
 import numpy as np
-img = image.load_img(args.image_file, target_size=(150, 150))
+img = image.load_img(os.path.join("../Data/Scene_Data/" ,args.image_file), target_size=(150, 150))
 img_array = image.img_to_array(img)
 img_array = np.expand_dims(img_array, axis=0) # Create batch axis
 

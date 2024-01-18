@@ -1,6 +1,6 @@
 from openai import OpenAI
 
-client = OpenAI(api_key='NOT SHOWN')
+client = OpenAI(api_key='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')
 import os
 import pandas as pd
 import time
@@ -21,8 +21,8 @@ def get_completion(prompt, model="gpt-3.5-turbo"):
 prompt = ""
 with open(sys.argv[1]) as f:
     prompt = f.read()
-prompt = "Will components create a complete circuit that works and have no major risks? There is a Battery connected to a Wire connected to a Wire connected to a Wire connected to a Wire connected to the original Battery."
-print("THIS IS THE PROMPT: " + prompt)
+print(prompt)
 response = get_completion(prompt)
 # print content
+
 print(response)
